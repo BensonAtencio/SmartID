@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>qrcode</ion-title>
+    <ion-buttons slot="start">
+      <ion-button href="/home">
+        <ion-icon slot="icon-only" name="arrow-back-sharp"></ion-icon>
+      </ion-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="ion-text-center">
+    <ion-card-content>
+      <qrcode
+      [qrdata]="qrString"
+      [width]="256"
+      [errorCorrectionLevel]="'M'">
+      </qrcode>
+
+      <ion-title format="bold">Dela cruz, Juan D.</ion-title>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

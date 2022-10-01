@@ -1,0 +1,32 @@
+ion-content {
+  --background: #69bb7b;
+  #header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        font-weight: 700;
+        font-size: 26px;
+        color:rgb(248, 248, 248);
+        margin-bottom:15%;
+    }
+
+    img {
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      border: 8px solid #ffffff;
+    }
+  }
+
+  #emailpass {
+    margin-top: 15%;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+  
+
+
+  

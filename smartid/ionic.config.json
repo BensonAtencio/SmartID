@@ -1,0 +1,7 @@
+{
+  "name": "smartid",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
