@@ -4,6 +4,11 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { LoginPageForm } from './login.form';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/service/auth.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 @Component({
@@ -15,18 +20,28 @@ export class LoginPage implements OnInit {
 
   form: FormGroup;
 
+  // userId: string;
+  // user: any;
+
   email: string;
   password: string;
+  // log: any;
 
   constructor(
     private router: Router,
     private formBuilder : FormBuilder,
     private auth: AuthService,
-    private toastr: ToastController
+    private toastr: ToastController,
+    // private afs: AngularFirestore
     ) { }
 
   ngOnInit() {
     this.form = new LoginPageForm(this.formBuilder).createForm();
+
+    // this.auth.user$.subscribe(user => {
+    //   this.userId = user.userId;
+    //   this.user = user;
+    // })
   }
 
   async toast(message, status){
@@ -42,6 +57,11 @@ export class LoginPage implements OnInit {
   login(){
     if(this.email && this.password){
       this.auth.signIn(this.email, this.password);
+      // this.log = firebase.auth().currentUser.metadata.lastSignInTime
+
+      // this.afs.collection('user').doc(this.userId).set({
+      //   'userActivity': this.log
+      // },{merge: true});
     }else{
       this.toast ('Please enter your email and password!', 'warning');
     }

@@ -10,7 +10,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class QrcodePage implements OnInit {
 
-  qrString: string;
+  qrString: any[];
   userId: string;
   user: any;
 
@@ -20,7 +20,7 @@ export class QrcodePage implements OnInit {
     this.auth.user$.subscribe(user => {
       this.userId = user.userId;
       this.user = user;
-      this.qrString = user.userName;
+      this.qrString = [user.userName, user.userNum, user.userEmail];
     })
   }
 

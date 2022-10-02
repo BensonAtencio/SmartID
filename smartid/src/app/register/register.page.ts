@@ -20,6 +20,7 @@ export class RegisterPage implements OnInit {
   email: string;
   password: string;
   cpassword: string;
+  activity: any = "";
 
   constructor
   (
@@ -54,6 +55,7 @@ export class RegisterPage implements OnInit {
             'userName': this.name,
             'userNum': this.num,
             'userEmail': this.email,
+            'userActivity': this.activity
       
           })
           .then(()=>{

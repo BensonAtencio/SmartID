@@ -10,5 +10,15 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-icon name="person-circle-outline" slot="start" size="large"></ion-icon>
+        <ion-card-subtitle>Name: {{user?.userName}}</ion-card-subtitle>
+      </ion-item>
+      <ion-item>
+        <ion-card-subtitle>Last Login: {{user?.userActivity}}</ion-card-subtitle>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
