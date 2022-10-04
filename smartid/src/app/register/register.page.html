@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar color="success">
-    <ion-title>register</ion-title>
+  <ion-toolbar color="medium">
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="success">
+<ion-content color="dark">
   <form [formGroup]="form">
     <ion-card>
       <ion-card-content>
@@ -44,12 +44,12 @@
 
           <app-err-message [field]="form.get('password')" message="Password is Required" error="required"></app-err-message>
 
-        <ion-button (click)="register()" class="center" type="submit" color="secondary" shape="round">
+        <ion-button (click)="register()" class="center" type="submit" color="dark" shape="round">
           Sign Up
         </ion-button>
 
-        <ion-button class="center" type="submit" color="primary" shape="round" (click)="backB()">
-          Back
+        <ion-button class="center" type="submit" color="medium" shape="round" (click)="backB()">
+          Sign In
         </ion-button>
       </ion-card-content>
     </ion-card>
