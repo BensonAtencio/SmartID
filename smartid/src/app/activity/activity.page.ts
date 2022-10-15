@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthService } from '../service/auth.service';
-// import firebase from 'firebase/compat/app';
-// import 'firebase/compat/auth';
-// import 'firebase/compat/firestore';
+import { IonSlides } from '@ionic/angular';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-activity',
@@ -13,12 +14,15 @@ import { AuthService } from '../service/auth.service';
 })
 export class ActivityPage implements OnInit {
 
+  sliders: IonSlides;
+
   userId: string;
   user: any;
   activity: any;
   history: any[];
 
-  constructor(private auth: AuthService, private afs: AngularFirestore, private afauth: AngularFireAuth) { }
+
+  constructor(private auth: AuthService, private afs: AngularFirestore, private afauth: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
     this.auth.user$.subscribe(user => {
@@ -28,5 +32,17 @@ export class ActivityPage implements OnInit {
     })
 
   }
+
+  slide0pts={
+    loop:true
+  };
+  slidesDidLoad(slides:IonSlides){
+    slides.startAutoplay();
+  }
+
+  logout(){
+    this.auth.signOut();
+  }
+
 
 }

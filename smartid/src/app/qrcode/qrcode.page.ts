@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { IonSlides } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthService } from '../service/auth.service';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-qrcode',
@@ -10,11 +15,15 @@ import { AuthService } from '../service/auth.service';
 })
 export class QrcodePage implements OnInit {
 
+  sliders: IonSlides;
+
   qrString: any[];
   userId: string;
   user: any;
 
-  constructor(private auth: AuthService, private afs: AngularFirestore, private afauth: AngularFireAuth) { }
+  logH: any;
+
+  constructor(private auth: AuthService, private afs: AngularFirestore, private afauth: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
     this.auth.user$.subscribe(user => {
@@ -22,8 +31,27 @@ export class QrcodePage implements OnInit {
       this.user = user;
       this.qrString = [user.userName, user.userNum, user.userEmail];
     })
+    this.logH = firebase.auth().currentUser.metadata.lastSignInTime;
   }
 
+  activity(){
+    this.afs.collection('user').doc(this.userId).set({
+        'userActivity': this.logH
+      },{merge: true});
+    
+    this.router.navigate(['/activity'])
+    }
 
+
+  slide0pts={
+    loop:true
+  };
+  slidesDidLoad(slides:IonSlides){
+    slides.startAutoplay();
+  }
+
+  logout(){
+    this.auth.signOut();
+  }
 
 }
