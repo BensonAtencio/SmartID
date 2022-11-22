@@ -16,6 +16,7 @@ export class RegisterPage implements OnInit {
   form: FormGroup;
 
   name: string;
+  section: string;
   num: number;
   email: string;
   password: string;
@@ -53,6 +54,7 @@ export class RegisterPage implements OnInit {
           this.afs.collection('user').doc(data.user.uid).set({
             'userId': data.user.uid,
             'userName': this.name,
+            'userSection': this.section,
             'userNum': this.num,
             'userEmail': this.email,
             'userActivity': this.activity

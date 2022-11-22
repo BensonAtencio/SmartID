@@ -19,6 +19,7 @@ export class HomePage {
 
   userId: string;
   user: any;
+  section: string;
   
   logH: any;
 
@@ -27,7 +28,8 @@ export class HomePage {
   ngOnInit() {
     this.auth.user$.subscribe(user => {
       this.userId = user.userId;
-      this.user = user
+      this.user = user;
+      this.user = user.userSection;
     })
     this.logH = firebase.auth().currentUser.metadata.lastSignInTime;
   }

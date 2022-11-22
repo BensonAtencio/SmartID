@@ -1,4 +1,5 @@
 export interface User {
+    userSection: string;
     userActivity: any;
     userId: string;
     userName: string;

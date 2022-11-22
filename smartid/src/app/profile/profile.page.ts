@@ -19,6 +19,7 @@ export class ProfilePage implements OnInit {
   logH: any;
   userId: string;
   user: any;
+  section: string;
   num: number;
   name: string;
   email: string;
@@ -30,6 +31,7 @@ export class ProfilePage implements OnInit {
       this.userId = user.userId;
       this.user = user;
       this.name = user.userName;
+      this.section = user.userSection;
       this.num = user.userNum;
       this.email = user.userEmail;
     })

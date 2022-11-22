@@ -16,6 +16,13 @@
           <app-err-message [field]="form.get('name')" message="This Field is Required" error="required"></app-err-message>
           
           <ion-item>
+            <ion-label position="block">Year/Section:</ion-label>
+              <ion-input type="text" formControlName="section" [(ngModel)]="section" name="section"></ion-input>
+          </ion-item>
+
+          <app-err-message [field]="form.get('section')" message="This Field is Required" error="required"></app-err-message>
+
+          <ion-item>
             <ion-label position="block">Phone Number:</ion-label>
               <ion-input type="number" formControlName="num" [(ngModel)]="num" name="num"></ion-input>
           </ion-item>

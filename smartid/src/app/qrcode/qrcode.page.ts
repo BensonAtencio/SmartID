@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonItemDivider, IonSlides } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthService } from '../service/auth.service';
@@ -29,7 +29,8 @@ export class QrcodePage implements OnInit {
     this.auth.user$.subscribe(user => {
       this.userId = user.userId;
       this.user = user;
-      this.qrString = [user.userName, user.userNum, user.userEmail];
+      this.qrString = [user.userName , user.userSection];
+      
     })
     this.logH = firebase.auth().currentUser.metadata.lastSignInTime;
   }
