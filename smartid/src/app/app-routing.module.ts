@@ -28,11 +28,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'activity',
-    loadChildren: () => import('./activity/activity.module').then( m => m.ActivityPageModule),
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },

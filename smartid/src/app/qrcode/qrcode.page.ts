@@ -29,7 +29,7 @@ export class QrcodePage implements OnInit {
     this.auth.user$.subscribe(user => {
       this.userId = user.userId;
       this.user = user;
-      this.qrString = [user.userName , user.userSection];
+      this.qrString = [user.userName ,"  ", user.userSection];
       
     })
     this.logH = firebase.auth().currentUser.metadata.lastSignInTime;
