@@ -62,6 +62,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
             }
         ?>
     </table>
+    <br><br>
     <table>
         <tr>
             <th>Name and Section</th>
@@ -82,8 +83,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
         ?>
         </tr>
     </table>
+    <br><br>
 
-    <a href="logout.php">Logout</a>
+    <a href="logout.php">Logout</a><br>
+    <a href="clear.php">Clear Records</a>
 
 </body>
 

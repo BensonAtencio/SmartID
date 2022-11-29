@@ -4,7 +4,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <?php
-
+include "db_conn.php";
 // get the q parameter from URL
 $q = $_REQUEST["q"];
 
@@ -32,24 +32,28 @@ if ($q !="") {
 $result=mysqli_query($con,"SELECT * FROM logs_in WHERE name_and_section='$q'");
 $rowcount=mysqli_num_rows($result);
 if($rowcount==0){
-$ret=mysqli_query($con,"INSERT INTO `logs_in`(name_and_section,Time_in) VALUES ('$q',NOW())");
-if($ret)
-{
-date_default_timezone_set('Asia/Manila');
-echo '<div class="alert alert-success"><strong> Student Successfully Timed In!</strong></div>';
-echo date('l jS \of F Y h:i:s A');
-}
-else
-{
-
-}
-}else{
-//echo 'employee is already registered';  
-date_default_timezone_set('Asia/Manila');
-echo '<div class="alert alert-success"><strong> Student Successfully Timed In!</strong></div>';
-echo date('l jS \of F Y h:i:s A');
-
+  $ret=mysqli_query($con,"INSERT INTO `logs_in`(name_and_section,Time_in) VALUES ('$q',NOW())");
+  if($ret){
+    date_default_timezone_set('Asia/Manila');
+    echo '<div class="alert alert-success"><strong> Student Successfully Timed In!</strong></div>';
+    echo date('l jS \of F Y h:i:s A');
   }
+  else{}
+
+}
+else{
+  // $exe = mysqli_query($conn, "UPDATE `logs_in` SET Time_in = NOW() WHERE name_and_section=$q");
+  // if($exe){
+  // //echo 'Student is already Timed in but needs update';  
+  // date_default_timezone_set('Asia/Manila');
+  // echo '<div class="alert alert-success"><strong> Student Successfully Timed In again!</strong></div>';
+  // echo date('l jS \of F Y h:i:s A');
+  // }
+  // else{}
+  date_default_timezone_set('Asia/Manila');
+  echo '<div class="alert alert-success"><strong> Student Successfully Timed In!</strong></div>';
+  echo date('l jS \of F Y h:i:s A');
+}
 
 }
 
